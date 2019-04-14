@@ -695,14 +695,16 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
+   debugger;
    if (arr.length == 1) {
       return arr;
    }
    var result = arr.map(function(item,i) {
-      if (i <= (arr.length/2)) {
+      var pivot = Math.floor((arr.length - 1)/2);
+      if ((i < pivot) || (i <= pivot && arr.length % 2 == 0)) {
          var temp = arr[i];
-         arr[i] = arr[arr.length-i];
-         arr[arr.length-i] = temp;
+         arr[i] = arr[pivot+i+1];
+         arr[pivot+i+1] = temp;
       }
    });
    return arr;
